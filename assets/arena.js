@@ -108,28 +108,47 @@ const renderBlock = (block, type) => {
 		}))
 	)
 
-	if (element.title) block.title ? element.title.innerHTML = block.title : element.title.remove()
+	// if (element.title) block.title ? element.title.innerHTML = block.title : element.title.remove()
 	if (element.image) block.image ? element.image.src = block.image.large.url : element.image.remove()
+	$(element.image).click(function(){
+		$('#zoomupImage').attr('src', this.src).css('width','100%')
+
+		$('#imgModal').modal('show')
+	})
+	$(element.image).hover(function(){
+		const {title} = block;
+		const name = title.split('.')[0]
+		const text = $('#hoverText').text(name);
+		$(this).mousemove(function(e){
+			const {pageX,pageY} = e;
+			$(text).css({position: "absolute",'top':`${pageY+10}px`,'left':`${pageX+10}px`,'z-index':9999});   
+		})
+		// $('#zoomupImage').attr('src', this.src).css('width','100%')
+
+		// $('#imgModal').modal('show')
+	},function(){
+		$('#hoverText').html('')
+	})
 	if (element.embed) block.embed ? element.embed.innerHTML = block.embed.html : element.embed.remove()
 	if (element.audio) block.attachment ? element.audio.src = block.attachment.url : element.audio.remove()
 	if (element.video) block.attachment ? element.video.src = block.attachment.url : element.video.remove()
-	if (element.link) {
-		if (block.source) {
-			element.link.href = block.source.url
-			if (element.linkTitle) element.linkTitle.innerHTML = block.source.title
-		}
-		else if (block.attachment) {
-			element.link.href = block.attachment.url
-			if (element.linkTitle) element.linkTitle.innerHTML = block.title
-		}
-		else {
-			element.link.remove()
-			element.linkTitle.remove()
-		}
-	}
-	if (element.content) block.content_html ? element.content.innerHTML = block.content_html : element.content.remove()
-	if (element.description) block.description_html ? element.description.innerHTML = block.description_html : element.description.remove()
-	if (element.type) element.type.innerHTML = type.name
+	// if (element.link) {
+	// 	if (block.source) {
+	// 		element.link.href = block.source.url
+	// 		if (element.linkTitle) element.linkTitle.innerHTML = block.source.title
+	// 	}
+	// 	else if (block.attachment) {
+	// 		element.link.href = block.attachment.url
+	// 		if (element.linkTitle) element.linkTitle.innerHTML = block.title
+	// 	}
+	// 	else {
+	// 		element.link.remove()
+	// 		element.linkTitle.remove()
+	// 	}
+	// }
+	// if (element.content) block.content_html ? element.content.innerHTML = block.content_html : element.content.remove()
+	// if (element.description) block.description_html ? element.description.innerHTML = block.description_html : element.description.remove()
+	// if (element.type) element.type.innerHTML = type.name
 
 	type.container.append(template)
 }
@@ -138,11 +157,15 @@ const renderBlock = (block, type) => {
 
 window.addEventListener('DOMContentLoaded', () => {
 	const channel = document.getElementById('channel-url').href.split('/').filter(Boolean).pop()
-
+	$("#work-button").click(function(){
+		$('html,body').animate({scrollTop: '650px'}, 500)
+	  });
 	fetch(`https://api.are.na/v2/channels/${channel}?per=100`, {cache: 'no-store'})
 		.then(response => response.json())
 		.then(data => {
-			setBasics(data)
+		
+			// setBasics(data)
 			parseBlocks(data)
+			
 		})
 });

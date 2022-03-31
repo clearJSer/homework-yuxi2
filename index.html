@@ -1,132 +1,197 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="assets/reset.css" rel="stylesheet">
-		<link href="assets/style.css" rel="stylesheet">
-		<script src="assets/arena.js"></script>
-		<link href="assets/favicon.png" rel="icon">
-	</head>
-	<body>
 
-		<!-- Replace this URL with your channel to connect the API! -->
-		<a href="https://www.are.na/michael-fehrenbach/typography-and-interaction-too" id="channel-url">
-			<h1 id="channel-title"></h1> <!-- The channel title will be inserted inside this h1. -->
-		</a>
-		<div id="channel-description"></div> <!-- Same here for the channel description. -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="assets/reset.css" rel="stylesheet">
+	<link href="assets/style.css" rel="stylesheet">
+	<script src="assets/arena.js"></script>
+	<link href="assets/favicon.png" rel="icon">
+	<link rel="stylesheet" href="assets/bootstrap.css">
+</head>
+
+<body>
+	<!-- Large modal to show image -->
+	<!-- <button type="button" class="btn btn-primary" data-target="#myModal" data-toggle="modal"
+		data-target=".bs-example-modal-lg">Large modal</button> -->
+		<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-content">
+				<img id="zoomupImage" alt="">
+			  </div>
+			</div>
+		  </div>
+	<div>
+		<div class="nav nav-home">HOME</div>
+		<div class="nav nav-work" id="work-button">WORK</div>
+		<div class="nav nav-about">ABOUT</div>
+	</div>
+	<div class="hoverText" id="hoverText">
+
+	</div>
+	<!-- first page -->
+	<section class="home-page">
+		<div class="container">
+			<svg viewBox="0 0 164 128" fill="none" id="header-badge1" role="img" aria-labelledby="title_badge1"
+				aria-describedby="description_badge1" xmlns="http://www.w3.org/2000/svg">
+				<title id="title_badge1">Graphic design</title>
+				<desc id="description_badge1">Logotype representing the words graphic design</desc>
+				<rect x="26.021" y="127.213" width="89" height="144" rx="44.5" transform="rotate(-107 26.021 127.213)"
+					fill="#FF6B00"></rect>
+				<path
+					d="M32.108 69.282c1.284 4.197 4.318 6.65 8.495 5.374 3.695-1.13 4.834-4.157 3.374-9.003l.522-.16.256 1.986 1.59 5.202 1.948-.596-1.958-6.406c-.246-.803-.797-1.096-1.68-.826l-7.07 2.161.48 1.567 4.538-1.388c.98 3.06.155 4.96-2.476 5.764-3.112.951-5.033-.877-6.07-4.271-1.032-3.374-.04-6.093 3.112-7.057 2.651-.81 4.234.2 5.23 2.31l1.948-.595c-1.367-2.964-4.139-4.488-7.693-3.401-4.097 1.252-5.823 5.161-4.546 9.339ZM50.882 71.294l1.948-.596-1.695-5.542 6.808-2.082 1.694 5.543 1.948-.596-1.578-5.16c-.245-.804-.75-1.09-1.613-.825l-1.767.54-.16-.522c1.487-.74 2.482-2.01 1.819-4.18-.97-3.172-3.52-3.25-6.893-2.218l-4.84 1.48 4.329 14.158Zm-.263-7.825-1.602-5.242 2.891-.884c2.31-.706 3.791-.961 4.534 1.469.75 2.45-.621 3.066-2.931 3.772l-2.892.885ZM74.978 63.927l1.948-.596-8.787-12.795-4.037 1.234-.13 15.521 1.949-.595.033-5.852 5.724-1.75 3.3 4.833Zm-9.017-4.93.054-7.219.543-.165 4.082 5.954-4.68 1.43ZM79.029 47.207l-4.177 1.277 4.328 14.158 1.948-.596-1.455-4.76 2.23-.68c3.574-1.093 5.674-2.702 4.507-6.517-1.166-3.816-3.806-3.975-7.381-2.882Zm2.418 7.693-2.29.7-1.841-6.025 2.289-.7c2.31-.706 4.053-.822 4.857 1.81.804 2.63-.706 3.509-3.015 4.215ZM97.474 41.568l1.94 6.346-8.094 2.474-1.94-6.346-1.948.596 4.329 14.158 1.948-.596-1.873-6.125 8.094-2.474 1.872 6.125 1.968-.602-4.328-14.158-1.968.602ZM111.034 39.266l-.516-1.686-8.294 2.535.516 1.687 3.173-.97 3.297 10.784-3.173.97.516 1.687 8.294-2.535-.516-1.687-3.173.97-3.297-10.785 3.173-.97ZM113.985 44.25c1.265 4.136 4.739 6.522 8.977 5.226 3.675-1.123 5.421-4.029 4.769-7.672l-1.948.595c.452 2.629-.727 4.592-3.337 5.39-3.133.958-5.494-.802-6.513-4.135-1.013-3.314-.04-6.093 3.093-7.05 2.611-.799 4.679.15 5.774 2.582l1.948-.596c-1.49-3.365-4.563-4.797-8.238-3.673-4.237 1.295-5.784 5.215-4.525 9.332ZM49.92 80.157 45.3 81.57l4.33 14.158 4.618-1.413c3.515-1.074 6.929-3.194 5.062-9.299-1.86-6.085-5.876-5.933-9.39-4.859Zm3.812 12.472-2.67.816-3.298-10.784 2.671-.817c2.51-.767 5.378-1.227 6.907 3.774 1.535 5.02-1.1 6.243-3.61 7.01ZM64.112 91.3l9.017-2.757-.516-1.687-7.069 2.161-1.394-4.558 6.065-1.855-.515-1.687-6.065 1.855-1.388-4.539 7.07-2.161-.516-1.687-9.018 2.757L64.112 91.3ZM85.95 80.648c-.903-2.952-4.514-2.77-7.53-2.792-2.536-.037-3.742-.174-4.147-1.499-.424-1.386.76-2.253 2.608-2.818 2.069-.632 4.064-.21 4.752 2.04l1.948-.596c-.737-2.41-3.018-4.414-7.216-3.13-3.534 1.08-4.715 2.89-4.034 5.12.78 2.55 3.108 2.695 6.204 2.693 2.418.007 4.902-.27 5.492 1.658.46 1.507-.613 2.45-2.943 3.162-2.952.902-4.826.663-5.771-2.43l-1.948.596c1.025 3.353 3.235 5.05 8.195 3.533 4.217-1.29 5.053-3.368 4.39-5.537ZM93.24 68.758l-.516-1.687-8.294 2.535.516 1.687 3.173-.97 3.297 10.785-3.173.97.516 1.687 8.293-2.536-.515-1.687-3.173.97-3.297-10.784 3.173-.97ZM96.19 73.74c1.284 4.198 4.318 6.652 8.495 5.375 3.695-1.13 4.834-4.157 3.374-9.003l.522-.16.256 1.986 1.591 5.202 1.948-.596-1.959-6.406c-.246-.803-.796-1.096-1.68-.826l-7.069 2.161.479 1.567 4.539-1.388c.979 3.06.154 4.96-2.476 5.764-3.113.951-5.034-.877-6.071-4.271-1.032-3.374-.04-6.093 3.113-7.056 2.65-.81 4.233.199 5.229 2.31l1.948-.596c-1.367-2.964-4.139-4.488-7.693-3.401-4.097 1.252-5.822 5.162-4.545 9.339ZM114.964 75.753l1.948-.596-3.758-12.29-.747-1.221.543-.166 10.669 11.627 3.916-1.198-4.328-14.158-1.968.602 3.757 12.29.747 1.221-.542.166-10.65-11.633-3.916 1.198 4.329 14.158Z"
+					fill="#000"></path>
+			</svg>
+			<div class="content">
+				“There is a poetic nature to minimalism that is about striking a balance between full and empty.”
+				<p>–Jennie C. Jones</p>
+			</div>
+			<svg viewBox="0 0 221 142" fill="none" id="header-badge2" role="img" aria-labelledby="title_badge2"
+				aria-describedby="description_badge2" xmlns="http://www.w3.org/2000/svg">
+				<title id="title_badge1">Art direction</title>
+				<desc id="description_badge1">Logotype representing the words art direction</desc>
+				<path
+					d="M118.798 19.573a3.999 3.999 0 0 1 2.217.431l78.049 40.459a4.001 4.001 0 0 1 2.086 4.314l-8.78 45.17a4 4 0 0 1-3.55 3.219l-87.522 8.275a4 4 0 0 1-2.217-.431L21.032 80.551a4 4 0 0 1-2.086-4.314l8.78-45.17a4 4 0 0 1 3.55-3.219l87.522-8.275Z"
+					fill="#4E95FF"></path>
+				<path
+					d="m102.143 63.877 1.999.389-1.751-15.423-4.144-.805-7.4 13.643 1.999.389 2.777-5.151 5.875 1.142.645 5.816Zm-5.648-8.585 3.438-6.35.556.109.809 7.174-4.803-.933ZM106.457 64.715l1.999.39 1.106-5.69 6.988 1.358-1.106 5.69 2 .388 1.03-5.298c.16-.824-.151-1.313-1.038-1.485l-1.814-.353.104-.536c1.66.045 3.135-.61 3.568-2.836.633-3.257-1.581-4.522-5.044-5.195l-4.968-.966-2.825 14.533Zm3.442-7.032 1.046-5.38 2.968.577c2.371.46 3.798.93 3.313 3.425-.489 2.515-1.988 2.416-4.359 1.955l-2.968-.577ZM133.795 54.947l-11.977-2.328-.336 1.732 4.988.97-2.488 12.801 2 .389 2.488-12.802 4.989.97.336-1.732ZM55.392 62.12l-4.74-.922-2.826 14.533 4.741.921c3.608.701 7.618.433 8.836-5.834 1.214-6.246-2.403-7.998-6.01-8.699Zm-2.488 12.8-2.742-.532 2.152-11.07 2.742.533c2.577.5 5.325 1.441 4.327 6.574-1.002 5.154-3.902 4.996-6.479 4.496ZM72.381 67.219l.337-1.732-8.514-1.655-.336 1.732 3.257.633-2.152 11.07-3.257-.634-.337 1.732 8.514 1.655.336-1.732-3.257-.633 2.152-11.07 3.257.634ZM72.768 80.579l2 .388 1.105-5.69 6.988 1.36-1.106 5.689 2 .389 1.03-5.298c.16-.825-.151-1.313-1.038-1.486l-1.814-.352.104-.536c1.66.044 3.135-.61 3.568-2.837.633-3.257-1.581-4.521-5.044-5.195l-4.968-.965-2.825 14.533Zm3.442-7.033 1.046-5.38 2.968.577c2.37.46 3.798.93 3.313 3.425-.489 2.515-1.988 2.416-4.359 1.955l-2.968-.577ZM86.829 83.312l9.256 1.8.336-1.733-7.256-1.41.91-4.68L96.3 78.5l.337-1.73-6.226-1.211.906-4.659 7.256 1.41.337-1.73-9.256-1.8-2.825 14.533ZM99.2 78.165c-.826 4.246 1.122 7.984 5.471 8.83 3.773.732 6.679-1.013 7.813-4.537l-1.999-.388c-.835 2.533-2.797 3.713-5.477 3.193-3.216-.626-4.474-3.288-3.809-6.71.661-3.4 2.825-5.398 6.041-4.773 2.68.521 4.061 2.33 3.886 4.992l1.999.388c.265-3.67-1.776-6.378-5.549-7.111-4.349-.846-7.555 1.89-8.377 6.116ZM126.86 76.011l-11.977-2.328-.337 1.732 4.989.97-2.489 12.8 2 .39 2.488-12.802 4.989.97.337-1.732ZM137.533 79.883l.337-1.732-8.514-1.655-.336 1.732 3.257.633-2.152 11.07-3.257-.633-.337 1.731 8.514 1.655.336-1.731-3.257-.633 2.152-11.07 3.257.633ZM137.799 85.668c-.825 4.246 1.102 7.98 5.452 8.825 4.329.842 7.514-1.898 8.339-6.144.822-4.226-1.105-7.96-5.434-8.801-4.35-.846-7.535 1.894-8.357 6.12Zm2 .389c.649-3.34 2.722-5.419 6.02-4.778 3.298.642 4.421 3.341 3.772 6.68-.653 3.361-2.705 5.444-6.004 4.803-3.298-.641-4.441-3.345-3.788-6.705ZM152.907 96.156l1.999.389 2.453-12.616-.086-1.429.556.109 3.963 15.274 4.019.782 2.825-14.533-2.02-.393-2.452 12.616.086 1.428-.557-.108-3.941-15.27-4.02-.782-2.825 14.533Z"
+					fill="#000"></path>
+			</svg>
+		</div>
+	</section>
+	<!-- Replace this URL with your channel to connect the API! -->
+	<a href="https://www.are.na/vern-liu-1ov_c1lpr70/uniform-h7pwt9qqzmw" id="channel-url">
+		<h1 id="channel-title"></h1> <!-- The channel title will be inserted inside this h1. -->
+	</a>
+	<div id="channel-description"></div> <!-- Same here for the channel description. -->
 
 
 
-		<!-- All the channel “blocks” will be created as children, here. -->
-		<!-- You could move the classes to different section elements to separate the types! -->
-		<section class="audio-embed-blocks audio-file-blocks image-blocks embed-blocks link-blocks pdf-blocks text-blocks video-embed-blocks video-file-blocks">
-			<h2>Blocks</h2>
+	<!-- All the channel “blocks” will be created as children, here. -->
+	<!-- You could move the classes to different section elements to separate the types! -->
+	<div class="image-container">
+		<section
+			class=" image-row audio-embed-blocks audio-file-blocks image-blocks embed-blocks link-blocks pdf-blocks text-blocks video-embed-blocks video-file-blocks">
 		</section>
 
+	</div>
+
+	<!-- These are the templates for the various block types, below. -->
+	<!-- You can move/nest/remove any of the insertion points! -->
+	<!-- For example, you could only show images for actual image blocks. -->
+	<!-- You could not show the type if you group them by section, above. -->
+
+	<!-- Spotify, Soundcloud, etc. -->
+	<template id="audio-embed-block">
+		<figure class="audio-embed">
+			<!-- You can use the container classes to style a whole type. -->
+			<h3 class="title"></h3> <!-- Block title inserts here. -->
+			<img class="image"> <!-- Image/cover image source inserts here. -->
+			<div class="embed"></div> <!-- Embed iframe inserts here. -->
+			<a class="link">
+				<!-- Original URL inserts here. -->
+				<p class="link-title"></p> <!-- Link title inserts here. -->
+			</a>
+			<figcaption class="description"></figcaption> <!-- Block description inserts here. -->
+			<p class="type"></p> <!-- Block type/kind inserts here. -->
+		</figure>
+	</template>
+
+	<!-- Uploaded audio files. -->
+	<template id="audio-file-block">
+		<figure class="audio-file-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<audio class="audio" controls></audio> <!-- Audio source inserts here. -->
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<template id="image-block">
+		<figure class="image-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<a class="link">
+				<p class="link-title"></p>
+			</a>
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<template id="link-block">
+		<figure class="link-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<a class="link">
+				<p class="link-title"></p>
+			</a>
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<template id="pdf-block">
+		<figure class="pdf-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<a class="link">
+				<!-- PDF link inserts here. -->
+				<p class="link-title"></p> <!-- Repeats the block title. -->
+			</a>
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<template id="text-block">
+		<figure class="text-block">
+			<h3 class="title"></h3>
+			<div class="content"></div> <!-- Text blocks insert their HTML here. -->
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<!-- YouTube, Vimeo, etc. -->
+	<template id="video-embed-block">
+		<figure class="video-embed-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<div class="embed"></div>
+			<a class="link">
+				<p class="link-title"></p>
+			</a>
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
+
+	<!-- Uploaded video files. -->
+	<template id="video-file-block">
+		<figure class="video-file-block">
+			<h3 class="title"></h3>
+			<img class="image">
+			<video class="video" controls></video> <!-- Video source inserts here. -->
+			<figcaption class="description"></figcaption>
+			<p class="type"></p>
+		</figure>
+	</template>
 
 
-		<!-- These are the templates for the various block types, below. -->
-		<!-- You can move/nest/remove any of the insertion points! -->
-		<!-- For example, you could only show images for actual image blocks. -->
-		<!-- You could not show the type if you group them by section, above. -->
 
- 		<!-- Spotify, Soundcloud, etc. -->
-		<template id="audio-embed-block">
-			<figure class="audio-embed"> <!-- You can use the container classes to style a whole type. -->
-				<h3 class="title"></h3> <!-- Block title inserts here. -->
-				<img class="image"> <!-- Image/cover image source inserts here. -->
-				<div class="embed"></div> <!-- Embed iframe inserts here. -->
-				<a class="link"> <!-- Original URL inserts here. -->
-					<p class="link-title"></p> <!-- Link title inserts here. -->
-				</a>
-				<figcaption class="description"></figcaption> <!-- Block description inserts here. -->
-				<p class="type"></p> <!-- Block type/kind inserts here. -->
-			</figure>
-		</template>
-
- 		<!-- Uploaded audio files. -->
-		<template id="audio-file-block">
-			<figure class="audio-file-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<audio class="audio" controls></audio> <!-- Audio source inserts here. -->
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<template id="image-block">
-			<figure class="image-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<a class="link">
-					<p class="link-title"></p>
-				</a>
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<template id="link-block">
-			<figure class="link-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<a class="link">
-					<p class="link-title"></p>
-				</a>
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<template id="pdf-block">
-			<figure class="pdf-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<a class="link"> <!-- PDF link inserts here. -->
-					<p class="link-title"></p> <!-- Repeats the block title. -->
-				</a>
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<template id="text-block">
-			<figure class="text-block">
-				<h3 class="title"></h3>
-				<div class="content"></div> <!-- Text blocks insert their HTML here. -->
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<!-- YouTube, Vimeo, etc. -->
-		<template id="video-embed-block">
-			<figure class="video-embed-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<div class="embed"></div>
-				<a class="link">
-					<p class="link-title"></p>
-				</a>
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-		<!-- Uploaded video files. -->
-		<template id="video-file-block">
-			<figure class="video-file-block">
-				<h3 class="title"></h3>
-				<img class="image">
-				<video class="video" controls></video> <!-- Video source inserts here. -->
-				<figcaption class="description"></figcaption>
-				<p class="type"></p>
-			</figure>
-		</template>
-
-
-
-	</body>
+</body>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+	integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+	crossorigin="anonymous"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+	crossorigin="anonymous"></script>
 </html>

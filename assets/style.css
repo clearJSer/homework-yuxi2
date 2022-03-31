@@ -1,8 +1,11 @@
 /* These styles are just to make it easier to see the blocks, initially. */
 
 body {
-	font-family: monospace;
-	padding: 40px;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+	background-color: var(--background);
+	position: relative;
 }
 
 a {
@@ -13,11 +16,15 @@ h1, h2, h3 {
 	font-size: 200%;
 }
 
-section,
+/* section,
 figure {
 	margin-top: 80px;
 	max-width: 600px;
-}
+} */
+
+figure {
+	max-width: 120px;
+} 
 
 #channel-description > *,
 figure > *:not(:first-child),
@@ -28,3 +35,89 @@ figure > *:not(:first-child),
 }
 
 /* Clear them out once you’ve got your channel plugged in! */
+.nav{
+	position: fixed;
+	text-transform: uppercase;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 33px;
+	color: #000;
+	cursor: pointer;
+	z-index: 999;
+}
+.nav:hover{
+	color:orange;
+}
+.nav-home{
+	left: 24px;
+	top:24px;
+}
+.nav-work{
+	top:24px;
+	right: 24px;
+}
+.nav-about{
+	bottom: 24px;
+	left: 24px;
+}
+/**
+home page
+**/
+.home-page{
+	position: relative;
+	height: 100vh;
+	padding-top: 255px;
+}
+#header-badge1 {
+    width: 84px;
+}
+#header-badge2 {
+	width: 120px;
+	float: right;
+}
+.container{
+	max-width: 935px;
+	margin: 0 auto;
+}
+.content{
+	font-size: 30px;
+}
+/* image */
+.image-container{
+	padding-top: 100px;
+	max-width: 1152px;
+    padding: 0 24px;
+    margin: 0 auto;
+}
+.image-row {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+}
+.image-block{
+	flex-basis: 33.3333%;
+	max-width: 33.3333%;
+	width: 33.3333%;
+	margin-bottom: 150px;
+	display: flex;
+	justify-content: center;
+}
+.image-block:nth-child(3n+0){
+	transform: translate3d(0px, -101px, 0px);
+}
+.image-block:nth-child(3n+1){
+	transform: translate3d(0px, -101px, 0px);
+}
+.image-block> img{
+	width: 155px;
+	height: 162px;
+	cursor: pointer;
+
+}
+#hoverText{
+	font-size: 30px;
+	font-weight: 500;
+}
